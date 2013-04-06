@@ -1,0 +1,935 @@
+<p>MyNote&amp;Config of Sublime Text Editor Sublime Text - An Excellent Replacement of GNU Emacs.</p>
+<h1 id="keyboard-binding">keyboard binding</h1>
+<p>Only have ctrl+x prefix, there is no ctrl+c and other prefix. The only exception is &quot;ctrl+x, ctrl+x&quot;: &quot;cut&quot;. ## Single Keys 括号里是重复兼容emacs的部分按键. &quot;/&quot; 隔开的前面是ctrl, 后面是alt, shift和ctrl-x只作为ctrl辅助, 没有ctrl+c前缀, ctrl+c只有复制含义. alt一般和一些对应操作或者文件操作联系起来.</p>
+<pre><code>f2   bookmark 下一个, C设置, S上一个/选择所有 bookmark
+f3   查找下一个, C查找当前单词, S上一个/选择所有
+f4   
+f7   build
+f9   行排序
+f11  全屏, 专注模式
+f12  在浏览器中查看
+1-9  切换组/切换tab
+q    录制宏, 播放宏/进入vi模式/ ctrl+alt+q 
+w    删除, 关闭/关闭
+e    行尾/翻页
+r    反向查找/
+t    交换, tag, 重新打开文/
+y    (黏贴)/(黏贴环)
+u    大写/小写
+i    上/段落移动
+o    del, **扩展选区到scope**/单词删除
+p    goto everthing/命令palette    //呼出各种palette
+[    缩进, folding/
+]    缩进, folding/
+\    
+a    行首, 全选C-xa/翻页
+s    正向查找/存盘  
+d    选择单词, 多选相关, 复制行/
+f    查找/goto everthing
+g    取消/goto line, tag, methord //其实只需要goto everthing就够了
+h    退格/单词退格
+j    左/单词左
+k    下/段落下
+l    右/单词
+;    注释/块注释
+&#39;    切换到sidebar/    
+z    撤销,重做/重复
+x    剪切,前缀/
+c    复制/
+v    黏贴/黏贴环
+b    选择段落/goto open files
+n    删除行, 选择行/删到段       //不设置kill整行
+m    选择行, 选择到缩进/                   
+,    /翻页
+.    /翻页      //close tag
+/    撤销,重做/自动补全</code></pre>
+<p>ctrl+,/.设置不能, 原因不明, 可能是因为搜狗输入法</p>
+<h2 id="navigating">Navigating</h2>
+<pre><code>| ctrl+ikjl                     | move           |
+| alt+il                        | move word      |
+| alt+ik                        | move paragraph |
+| ----------------------------- | -------------- |
+| alt+,. or pageup, pagedown    | move page      |
+| ctrl+a,e or home, end         | line home, end |
+| alt+a/e                       | 翻页             |
+| ctrl+home,end or alt+shift+,. | file home&amp;end  |
+| ctrl+9/0                      | 跳转至对应括号        |
+| ctrl+alt+0                    | 跳转至sidebar     |</code></pre>
+<p>&quot;overlay_scroll_bars&quot;: &quot;enabled&quot; 隐藏scrollbar Adding shift will select.</p>
+<p>注意ctrl+,.有意义 ## Editing</p>
+<pre><code>| c-c or m-w                         | copy                  |
+| c-x c-x                            | cut                   |
+| c-vy  ,c-s-v                       | paste, 黏贴并自动缩进        |
+| m-vy                               | paste circle          |
+| ctrl+shift+d                       | 复制当前行                 |
+| ctrl+xw                            | cut到标记                |
+| alt+w                              | copy到标记               |
+| ctrl+w                             | 退格删单词                 |
+| ------------------                 | --------              |
+| ctrl+/, u, z,                      | undo                  |
+| ctrl+shift+ /, u, z,               | redo                  |
+| --------                           |                       |
+| ctrl/alt+;                         | comment               |
+| ctrl+shift+;                       | block comment         |
+| --------------                     |                       |
+| ctrl+w                             | 退格删单词                 |
+| ctrl+h/o                           | 退格/删除                 |
+| ctrl+shift+h                       | 向前删除到行首               |
+| ctrl+m                             | 向后删除到行尾, 进入killring   |
+| ------------   f, g : goto         |                       |
+| ctrl+shift+f                       | project 查找替换          |
+| alt+f, ctrl+alt+f, ctrl+xf, ctrl+p | 打开文件, goto everything |
+| ctrl+xb, alt+b                     | 到open file            |
+| alt+g                              | 到行:                   |
+| ctrl+alt+g                         | 到tag@                 |
+| ctrl+shift+p,alt+p                 | 到命令                   |
+| ctrl+alt+p                         | 到project              |
+| ctrl+x,b                           | next view             |
+| ----------                         |                       |
+| ctrl+s/r, f                        | 查找                    |
+| ctrl+alt+r                         | 替换                    |
+| ctrl+shift+f                       | project 查找替换          |
+| f3, shift+f3                       | 下一个, 上一个, 查找词或者当前词    |
+| ctrl+d, ctrl+xd 跳过当前               | 扩展选择当前词               |
+| alt+f3                             | 选择所有当前词               |
+| ----------                         |                       |
+| alt+/                              | 补全                    |
+| ctrl+shift+up,down                 | 上下移动行或者多行             |
+| -----------------                  |                       |
+| f6                                 | 拼写检查toggle            |
+| ctrl+f6, ctrl+shift+f6             | 下一个, 上一个拼写检查          |
+| f9 , ctrl+f9(case sensitive)       | 行排序                   |
+| ---------                          |                       |
+| ctrl+alt+u/l  or ctrl+xu/xl        | 改成大写, 小写              |</code></pre>
+<p>//edit 菜单里面还有排列行, 排列选区功能 //搜狗输入法快捷键 ctrl+shift+q 表情, +e 英文输入法 ## Selecting</p>
+<pre><code>| ctrl+space                  | 标记                |
+| shift+定位                    | 选择                |
+| -------------               | ---------         |
+| ctrl+n 一般都要shift, 这里是简化     | 扩展到行              |
+| ctrl+shift+m,9,0,o,n        | 扩展到行,括号,scope, 缩进 |
+| b                           | 扩展到段落             |
+| ctrl+x, ctrl+a or ctrl+x, h | 全选                |
+| ctrl+d                      | 扩展选择当前词           |</code></pre>
+<h3 id="misc-window-sidebar">Misc, Window, Sidebar</h3>
+<pre><code>| ctrl+x,u              | 转换为utf8          |
+| --------              |                  |
+| ctrl+x, 1, 2, 3       | 切换窗口显示           |
+| alt+shift+数字          | 切换窗口显示           |
+| ------------          |                  |
+| ctrl+0                | 切换到侧边栏           |
+| ctrl+x,ctrl+z         | 切换侧边栏显示          |
+| ---------------       |                  |
+| view--&gt;keymap manager | 管理keymap冲突       |
+| ctrl+shift+t          | reopen last file |
+| ctrl+alt+t            | find todos       |</code></pre>
+<h2 id="indention-folding-table">Indention, Folding, Table</h2>
+<h3 id="缩进和tab">缩进和tab</h3>
+<pre><code>| tab           | 自动缩进               |
+| shift+tab     | 在行首是倒回缩进, 行内是普通tab |
+| ctrl+[]       | 调整缩进               |
+| ctrl+shift+,. | 调整缩进               |
+| ----------    |                    |
+| alt+q         | wrap lines         |</code></pre>
+<h3 id="folding">Folding</h3>
+<pre><code>| ctrl+shift+[] | fold, unfold |</code></pre>
+<h3 id="md模式">MD模式</h3>
+<p>MD语法 [https://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/basics.] showdown.js [http://softwaremaniacs.org/playground/showdown-highlight/] strapdown js [http://strapdownjs.com/] highlight.js [http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html]</p>
+<p>markdownediting 插件 编辑辅助 原背景颜色<string>#ECECEC</string> markdownpreview 插件 生成辅助</p>
+<pre><code>| tab       | 收起展开当前项目 |
+| shift+tab | 收起, 展开所有 |</code></pre>
+<h3 id="table">Table</h3>
+<p>//table editor</p>
+<pre><code> { &quot;keys&quot;: [&quot;ctrl+alt+j&quot;], &quot;command&quot;: &quot;table_editor_join_lines&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;(\\|)|(\\+)&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+{ &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;-&quot;], &quot;command&quot;: &quot;table_editor_insert_single_hline&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;$&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+    { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;=&quot;], &quot;command&quot;: &quot;table_editor_insert_double_hline&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;$&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+    { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;enter&quot;], &quot;command&quot;: &quot;table_editor_hline_and_move&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;$&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+    { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;|&quot;], &quot;command&quot;: &quot;table_editor_csv_to_table&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true }
+        ]
+    },
+### Gist
+  //gist
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+i&quot;], &quot;command&quot;: &quot;gist&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+p&quot;], &quot;command&quot;: &quot;gist_private&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+s&quot;], &quot;command&quot;: &quot;gist_update_file&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+o&quot;], &quot;command&quot;: &quot;gist_list&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+[&quot;], &quot;command&quot;: &quot;insert_gist_list&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+]&quot;], &quot;command&quot;: &quot;gist_add_file&quot; },</code></pre>
+<h2 id="plugins">Plugins</h2>
+<h2 id="settings">Settings</h2>
+<h3 id="user-settings">User Settings</h3>
+<pre><code>{
+    &quot;color_scheme&quot;: &quot;Packages/Tomorrow Color Schemes/Tomorrow-Night-Eighties.tmTheme&quot;,
+    &quot;fade_fold_buttons&quot;: false,
+    &quot;fold_buttons&quot;: true,
+    &quot;font_face&quot;: &quot;YaHei Consolas Hybrid&quot;,
+    &quot;font_options&quot;:
+    [
+        &quot;subpixel_antialias&quot;
+    ],
+    &quot;font_size&quot;: 13.0,
+    &quot;gutter&quot;: true,
+    &quot;highlight_modified_tabs&quot;: true,
+    &quot;ignored_packages&quot;:
+    [
+        &quot;Toggle Read-Only&quot;,
+        &quot;SublimeCodeIntel&quot;,
+        &quot;Chrome Apps and Extensions&quot;,
+        &quot;ZenCoding&quot;,
+        &quot;Switch&quot;,
+        &quot;ColorSchemeSelector&quot;,
+        &quot;SublimeLinter&quot;
+    ],
+    &quot;line_numbers&quot;: true,
+    &quot;margin&quot;: 4,
+    &quot;word_wrap&quot;: true,
+    &quot;open_files_in_new_window&quot;: false,
+    &quot;theme&quot;: &quot;Soda Light.sublime-theme&quot;
+}</code></pre>
+<h3 id="user-keybinds-备忘">user keybinds 备忘</h3>
+<pre><code>//perfect! emacs-like-keybindings~~&gt;_&lt;
+[
+
+  //vintage
+
+  { &quot;keys&quot;: [&quot;escape&quot;,&quot;escape&quot;], &quot;command&quot;: &quot;exit_insert_mode&quot;,
+    &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;setting.command_mode&quot;, &quot;operand&quot;: false },
+      { &quot;key&quot;: &quot;setting.is_widget&quot;, &quot;operand&quot;: false }
+    ]
+  },
+
+  { &quot;keys&quot;: [&quot;escape&quot;,&quot;escape&quot;], &quot;command&quot;: &quot;exit_visual_mode&quot;,
+    &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;setting.command_mode&quot;},
+      { &quot;key&quot;: &quot;num_selections&quot;, &quot;operand&quot;: 1},
+      { &quot;key&quot;: &quot;selection_empty&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: false, &quot;match_all&quot;: false }
+    ]
+  },
+
+  { &quot;keys&quot;: [&quot;escape&quot;,&quot;escape&quot;], &quot;command&quot;: &quot;hide_auto_complete&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;auto_complete_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+  { &quot;keys&quot;: [&quot;escape&quot;,&quot;escape&quot;], &quot;command&quot;: &quot;vi_cancel_current_action&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;setting.command_mode&quot; },
+      { &quot;key&quot;: &quot;selection_empty&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: false },
+      { &quot;key&quot;: &quot;vi_has_input_state&quot; }
+    ]
+  },
+
+
+{ &quot;keys&quot;: [&quot;escape&quot;], &quot;command&quot;: &quot;single_selection&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;num_selections&quot;, &quot;operator&quot;: &quot;not_equal&quot;, &quot;operand&quot;: 1 }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;escape&quot;], &quot;command&quot;: &quot;clear_fields&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;has_next_field&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;escape&quot;], &quot;command&quot;: &quot;clear_fields&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;has_prev_field&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;escape&quot;], &quot;command&quot;: &quot;hide_panel&quot;, &quot;args&quot;: {&quot;cancel&quot;: true},
+    &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;panel_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;escape&quot;], &quot;command&quot;: &quot;hide_overlay&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;overlay_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;escape&quot;], &quot;command&quot;: &quot;hide_auto_complete&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;auto_complete_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+  { &quot;keys&quot;: [&quot;h&quot;], &quot;command&quot;: &quot;enter_insert_mode&quot;,
+    &quot;context&quot;:
+    [
+      {&quot;key&quot;: &quot;setting.command_mode&quot;},
+      {&quot;key&quot;: &quot;selection_empty&quot;}
+    ]
+  },
+  { &quot;keys&quot;: [&quot;i&quot;], &quot;command&quot;: &quot;set_motion&quot;, &quot;args&quot;: {
+    &quot;motion&quot;: &quot;move&quot;,
+    &quot;motion_args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true },
+    &quot;linewise&quot;: true },
+    &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}]
+  },
+  { &quot;keys&quot;: [&quot;k&quot;], &quot;command&quot;: &quot;set_motion&quot;, &quot;args&quot;: {
+    &quot;motion&quot;: &quot;move&quot;,
+    &quot;motion_args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true },
+    &quot;linewise&quot;: true },
+    &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}]
+  },
+  { &quot;keys&quot;: [&quot;j&quot;], &quot;command&quot;: &quot;set_motion&quot;, &quot;args&quot;: {
+    &quot;motion&quot;: &quot;vi_move_by_characters_in_line&quot;,
+    &quot;motion_args&quot;: {&quot;forward&quot;: false, &quot;extend&quot;: true }},
+    &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}]
+  },
+
+
+  { &quot;keys&quot;: [&quot;H&quot;], &quot;command&quot;: &quot;enter_insert_mode&quot;, &quot;args&quot;:
+    {&quot;insert_command&quot;: &quot;vi_move_to_first_non_white_space_character&quot;},
+    &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}]
+  },
+
+  { &quot;keys&quot;: [&quot;H&quot;], &quot;command&quot;: &quot;enter_insert_mode&quot;,
+    &quot;args&quot;: {&quot;insert_command&quot;: &quot;shrink_selections_to_beginning&quot;},
+    &quot;context&quot;: [
+      {&quot;key&quot;: &quot;setting.command_mode&quot;},
+      {&quot;key&quot;: &quot;selection_empty&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: false}
+    ]
+  },
+  //   { &quot;keys&quot;: [&quot;I&quot;], &quot;command&quot;: &quot;enter_insert_mode&quot;, &quot;args&quot;:
+  //   {&quot;insert_command&quot;: &quot;vi_move_to_first_non_white_space_character&quot;},
+  //   &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}]
+  // },
+
+  // { &quot;keys&quot;: [&quot;I&quot;], &quot;command&quot;: &quot;enter_insert_mode&quot;,
+  //   &quot;args&quot;: {&quot;insert_command&quot;: &quot;shrink_selections_to_beginning&quot;},
+  //   &quot;context&quot;: [
+  //     {&quot;key&quot;: &quot;setting.command_mode&quot;},
+  //     {&quot;key&quot;: &quot;selection_empty&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: false}
+  //   ]
+  // },
+  { &quot;keys&quot;: [&quot;I&quot;], &quot;command&quot;: &quot;set_motion&quot;, &quot;args&quot;: {
+    &quot;motion&quot;: &quot;move_caret_to_screen_top&quot;,
+    &quot;motion_args&quot;: {&quot;repeat&quot;: 1},
+    &quot;linewise&quot;: true },
+    &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}]
+  },
+  { &quot;keys&quot;: [&quot;K&quot;], &quot;command&quot;: &quot;join_lines&quot;, &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}] },
+  { &quot;keys&quot;: [&quot;J&quot;], &quot;command&quot;: &quot;set_motion&quot;, &quot;args&quot;: {
+    &quot;motion&quot;: &quot;move_caret_to_screen_top&quot;,
+    &quot;motion_args&quot;: {&quot;repeat&quot;: 1},
+    &quot;linewise&quot;: true },
+    &quot;context&quot;: [{&quot;key&quot;: &quot;setting.command_mode&quot;}]
+  },
+
+  //gist
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+i&quot;], &quot;command&quot;: &quot;gist&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+p&quot;], &quot;command&quot;: &quot;gist_private&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+s&quot;], &quot;command&quot;: &quot;gist_update_file&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+o&quot;], &quot;command&quot;: &quot;gist_list&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+[&quot;], &quot;command&quot;: &quot;insert_gist_list&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+]&quot;], &quot;command&quot;: &quot;gist_add_file&quot; },
+
+
+
+
+
+  /////&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;    sublime setting    &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+  //替换原有的ctrl+k为ctrl+x
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+z&quot;], &quot;command&quot;: &quot;toggle_side_bar&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+u&quot;], &quot;command&quot;: &quot;upper_case&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+alt+u&quot;], &quot;command&quot;: &quot;lower_case&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+space&quot;], &quot;command&quot;: &quot;set_mark&quot; },
+  // { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+a&quot;], &quot;command&quot;: &quot;select_to_mark&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+w&quot;], &quot;command&quot;: &quot;delete_to_mark&quot; },
+  // { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+x&quot;], &quot;command&quot;: &quot;swap_with_mark&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+y&quot;], &quot;command&quot;: &quot;yank&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+backspace&quot;], &quot;command&quot;: &quot;run_macro_file&quot;, &quot;args&quot;: {&quot;file&quot;: &quot;Packages/Default/Delete to Hard BOL.sublime-macro&quot;} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+g&quot;], &quot;command&quot;: &quot;clear_bookmarks&quot;, &quot;args&quot;: {&quot;name&quot;: &quot;mark&quot;} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+c&quot;], &quot;command&quot;: &quot;show_at_center&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+1&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 1} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+2&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 2} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+3&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 3} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+4&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 4} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+5&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 5} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+6&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 6} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+7&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 7} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+8&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 8} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+9&quot;], &quot;command&quot;: &quot;fold_by_level&quot;, &quot;args&quot;: {&quot;level&quot;: 9} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+0&quot;], &quot;command&quot;: &quot;unfold_all&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+t&quot;], &quot;command&quot;: &quot;fold_tag_attributes&quot; },
+
+
+  //原有命令, 未改
+  { &quot;keys&quot;: [&quot;ctrl+p&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;: &quot;goto&quot;, &quot;show_files&quot;: true} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+p&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;: &quot;command_palette&quot;} },
+  { &quot;keys&quot;: [&quot;alt+p&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;: &quot;command_palette&quot;} },
+
+  //{ &quot;keys&quot;: [&quot;alt+h&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;subwords&quot;, &quot;forward&quot;: false} },
+  //{ &quot;keys&quot;: [&quot;alt+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;subword_ends&quot;, &quot;forward&quot;: true} },
+  //{ &quot;keys&quot;: [&quot;alt+shift+h&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;subwords&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true} },
+  //{ &quot;keys&quot;: [&quot;alt+shift+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;subword_ends&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true} },
+
+  { &quot;keys&quot;: [&quot;ctrl+pagedown&quot;], &quot;command&quot;: &quot;next_view&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+pageup&quot;], &quot;command&quot;: &quot;prev_view&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+tab&quot;], &quot;command&quot;: &quot;next_view_in_stack&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+shift+tab&quot;], &quot;command&quot;: &quot;prev_view_in_stack&quot; },
+
+  { &quot;keys&quot;: [&quot;ctrl+shift+l&quot;], &quot;command&quot;: &quot;split_selection_into_lines&quot; },
+
+
+
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+
+
+  //todo keys
+  { &quot;command&quot;: &quot;todo&quot;, &quot;keys&quot;: [ &quot;ctrl+alt+t&quot; ] },
+  { &quot;keys&quot;: [&quot;ctrl+shift+t&quot;], &quot;command&quot;: &quot;reopen_last_file&quot; },
+
+  //和ctrl+d有关的, useful!
+  { &quot;keys&quot;: [&quot;ctrl+shift+d&quot;], &quot;command&quot;: &quot;duplicate_line&quot; }, //复制行
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+d&quot;], &quot;command&quot;: &quot;find_under_expand_skip&quot; }, //跳过当前
+  { &quot;keys&quot;: [&quot;ctrl+d&quot;], &quot;command&quot;: &quot;find_under_expand&quot; },
+  //快速选择多个词, alt+f3, f3跳转
+
+  //这个很好, 扩展选区
+  //shift+l被占用了, 所以用ctrl+alt+l代替, 用shift+i,k调整. 注意ctrl+alt+k被占用而且l代表line, 很好
+  { &quot;keys&quot;: [&quot;ctrl+alt+l&quot;], &quot;command&quot;: &quot;expand_selection&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;line&quot;} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+space&quot;], &quot;command&quot;: &quot;expand_selection&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;scope&quot;} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+9&quot;], &quot;command&quot;: &quot;expand_selection&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;brackets&quot;} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+n&quot;], &quot;command&quot;: &quot;expand_selection&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;indentation&quot;} },
+  // { &quot;keys&quot;: [&quot;ctrl+shift+a&quot;], &quot;command&quot;: &quot;expand_selection&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;tag&quot;} },
+  //括号匹配
+  { &quot;keys&quot;: [&quot;ctrl+9&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;brackets&quot;} },   
+  // { &quot;keys&quot;: [&quot;ctrl+shift+h&quot;], &quot;command&quot;: &quot;replace_next&quot; },
+
+  { &quot;keys&quot;: [&quot;ctrl+alt+u&quot;], &quot;command&quot;: &quot;convert_to_utf8&quot;, &quot;args&quot;: {&quot;encoding&quot;: &quot;UTF-8&quot;, &quot;stamp&quot;: &quot;0&quot; } },
+
+
+  // { &quot;keys&quot;: [&quot;ctrl+alt+a&quot;], &quot;command&quot;: &quot;alignment&quot; },
+
+
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;    sublemacs    &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+  { &quot;keys&quot;: [&quot;alt+q&quot;], &quot;command&quot;: &quot;wrap_lines&quot; },
+  { &quot;keys&quot;: [&quot;alt+q&quot;], &quot;command&quot;: &quot;sbp_wrap_paragraph&quot;},
+  // { &quot;keys&quot;: [&quot;ctrl+o&quot;], &quot;command&quot;: &quot;sbp_open_line&quot; },
+
+
+  // Emacs style
+  // * Automatic mode detection like it&#39;s done in Emacs using prefixes ``-*- c++ -*-``
+  // * Find file at point ``M-x f f a p`` opens the file your current cursor points to
+
+  //toggle comment
+  { &quot;keys&quot;: [&quot;alt+;&quot;], &quot;command&quot;: &quot;toggle_comment&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+;&quot;], &quot;command&quot;: &quot;toggle_comment&quot;, &quot;args&quot;: { &quot;block&quot;: false } },
+  { &quot;keys&quot;: [&quot;ctrl+shift+;&quot;], &quot;command&quot;: &quot;toggle_comment&quot;, &quot;args&quot;: { &quot;block&quot;: true } },
+
+  //select all
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+a&quot;], &quot;command&quot;: &quot;select_all&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;h&quot;], &quot;command&quot;: &quot;select_all&quot;},
+
+  //delete
+  { &quot;keys&quot;: [&quot;ctrl+h&quot;], &quot;command&quot;: &quot;left_delete&quot; },
+  { &quot;keys&quot;: [&quot;alt+h&quot;], &quot;command&quot;: &quot;delete_word&quot;, &quot;args&quot;: { &quot;forward&quot;: false } },
+  { &quot;keys&quot;: [&quot;ctrl+o&quot;], &quot;command&quot;: &quot;right_delete&quot; },
+  { &quot;keys&quot;: [&quot;alt+o&quot;], &quot;command&quot;: &quot;delete_word&quot;, &quot;args&quot;: { &quot;forward&quot;: true } },
+  { &quot;keys&quot;: [&quot;ctrl+shift+h&quot;], &quot;command&quot;: &quot;run_macro_file&quot;, &quot;args&quot;: {&quot;file&quot;: &quot;Packages/Default/Delete to Hard BOL.sublime-macro&quot;}},
+
+  { &quot;keys&quot;: [&quot;alt+delete&quot;], &quot;command&quot;: &quot;delete_word&quot;, &quot;args&quot;: { &quot;forward&quot;: true } },
+  { &quot;keys&quot;: [&quot;ctrl+backspace&quot;], &quot;command&quot;: &quot;delete_word&quot;, &quot;args&quot;: { &quot;forward&quot;: false } },
+  { &quot;keys&quot;: [&quot;alt+backspace&quot;], &quot;command&quot;: &quot;delete_word&quot;, &quot;args&quot;: { &quot;forward&quot;: false } },
+  { &quot;keys&quot;: [&quot;super+backspace&quot;], &quot;command&quot;: &quot;delete_word&quot;, &quot;args&quot;: { &quot;forward&quot;: false } },
+
+  //undo and redo
+  { &quot;keys&quot;: [&quot;ctrl+/&quot;], &quot;command&quot;: &quot;undo&quot;},
+  { &quot;keys&quot;: [&quot;ctrl+shift+/&quot;], &quot;command&quot;: &quot;redo&quot;},
+  { &quot;keys&quot;: [&quot;ctrl+u&quot;], &quot;command&quot;: &quot;undo&quot;},
+  { &quot;keys&quot;: [&quot;ctrl+shift+u&quot;], &quot;command&quot;: &quot;redo&quot;},
+  // { &quot;keys&quot;: [&quot;ctrl+shift+/&quot;], &quot;command&quot;: &quot;soft_redo&quot; },
+  { &quot;keys&quot;: [&quot;alt+z&quot;], &quot;command&quot;: &quot;redo&quot;},
+  { &quot;keys&quot;: [&quot;ctrl+_&quot;], &quot;command&quot;: &quot;undo&quot;}, // consistency with the Mac
+
+  //move
+  { &quot;keys&quot;: [&quot;ctrl+n&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: true} },
+  // { &quot;keys&quot;: [&quot;ctrl+p&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: false} },
+
+  { &quot;keys&quot;: [&quot;ctrl+j&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;characters&quot;, &quot;forward&quot;: false} },
+  { &quot;keys&quot;: [&quot;ctrl+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;characters&quot;, &quot;forward&quot;: true} },
+  { &quot;keys&quot;: [&quot;ctrl+i&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: false} },
+  { &quot;keys&quot;: [&quot;ctrl+k&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: true} },
+
+  { &quot;keys&quot;: [&quot;alt+j&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;words&quot;, &quot;forward&quot;: false} },
+  { &quot;keys&quot;: [&quot;alt+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;word_ends&quot;, &quot;forward&quot;: true} },
+  { &quot;keys&quot;: [&quot;alt+i&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: false} },
+  { &quot;keys&quot;: [&quot;alt+k&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: true} },
+
+
+  { &quot;keys&quot;: [&quot;ctrl+shift+j&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;characters&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;characters&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+i&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+k&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true} },
+
+  { &quot;keys&quot;: [&quot;alt+shift+j&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;words&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true} },
+  { &quot;keys&quot;: [&quot;alt+shift+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;word_ends&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true} },
+
+  { &quot;keys&quot;: [&quot;ctrl+alt+i&quot;], &quot;command&quot;: &quot;select_lines&quot;, &quot;args&quot;: {&quot;forward&quot;: false} },
+  { &quot;keys&quot;: [&quot;ctrl+alt+k&quot;], &quot;command&quot;: &quot;select_lines&quot;, &quot;args&quot;: {&quot;forward&quot;: true} },
+
+
+
+
+  { &quot;keys&quot;: [&quot;ctrl+a&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;bol&quot;, &quot;extend&quot;: false} },
+  { &quot;keys&quot;: [&quot;ctrl+e&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;eol&quot;, &quot;extend&quot;: false} },
+  { &quot;keys&quot;: [&quot;ctrl+e&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;eol&quot;, &quot;extend&quot;: true}, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+  { &quot;keys&quot;: [&quot;shift+ctrl+a&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;bol&quot;, &quot;extend&quot;: true} },
+  { &quot;keys&quot;: [&quot;shift+ctrl+e&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;eol&quot;, &quot;extend&quot;: true} },
+
+  { &quot;keys&quot;: [&quot;pageup&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: false} },
+  { &quot;keys&quot;: [&quot;pagedown&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: true} },
+  { &quot;keys&quot;: [&quot;alt+,&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: false} },
+  { &quot;keys&quot;: [&quot;alt+.&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: true} },
+  { &quot;keys&quot;: [&quot;shift+pageup&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true} },
+  { &quot;keys&quot;: [&quot;shift+pagedown&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;pages&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true} },
+
+  { &quot;keys&quot;: [&quot;ctrl+home&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;bof&quot;, &quot;extend&quot;: false} },
+  { &quot;keys&quot;: [&quot;ctrl+end&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;eof&quot;, &quot;extend&quot;: false} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+home&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;bof&quot;, &quot;extend&quot;: true} },
+  { &quot;keys&quot;: [&quot;ctrl+shift+end&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;eof&quot;, &quot;extend&quot;: true} },
+
+  { &quot;keys&quot;: [&quot;ctrl+alt+,&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;bof&quot;, &quot;extend&quot;: false}},
+  { &quot;keys&quot;: [&quot;ctrl+alt+.&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;eof&quot;, &quot;extend&quot;: false}},
+  { &quot;keys&quot;: [&quot;shift+alt+,&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;bof&quot;, &quot;extend&quot;: false}},
+  { &quot;keys&quot;: [&quot;shift+alt+.&quot;], &quot;command&quot;: &quot;move_to&quot;, &quot;args&quot;: {&quot;to&quot;: &quot;eof&quot;, &quot;extend&quot;: false}},
+
+
+  { &quot;keys&quot;: [&quot;ctrl+up&quot;], &quot;command&quot;: &quot;scroll_lines&quot;, &quot;args&quot;: {&quot;amount&quot;: 1.0 } },
+  { &quot;keys&quot;: [&quot;ctrl+down&quot;], &quot;command&quot;: &quot;scroll_lines&quot;, &quot;args&quot;: {&quot;amount&quot;: -1.0 } },
+
+  // { &quot;keys&quot;: [&quot;ctrl+l&quot;], &quot;command&quot;: &quot;sbp_recenter_in_view&quot; },
+
+  // Kill Ring handling
+  //cut  (only cut, can&#39;t kill line)
+  { &quot;keys&quot;: [&quot;ctrl+w&quot;], &quot;command&quot;: &quot;sbp_delete_to_mark&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;ctrl+x&quot;], &quot;command&quot;: &quot;sbp_delete_to_mark&quot; },
+  //copy or copy line
+  { &quot;keys&quot;: [&quot;ctrl+c&quot;], &quot;command&quot;: &quot;sbp_kill_ring_save&quot; },
+  { &quot;keys&quot;: [&quot;alt+w&quot;], &quot;command&quot;: &quot;sbp_kill_ring_save&quot; },
+  //kill line  (just like emacs, no &amp; no need one key kill line)
+  { &quot;keys&quot;: [&quot;ctrl+m&quot;], &quot;command&quot;: &quot;sbp_kill_line&quot;},
+  { &quot;keys&quot;: [&quot;alt+m&quot;], &quot;command&quot;: &quot;sbp_kill_to_end_of_sentence&quot;},
+  //paste&amp; yank choice
+  { &quot;keys&quot;: [&quot;ctrl+y&quot;], &quot;command&quot;: &quot;paste&quot; },
+  { &quot;keys&quot;: [&quot;alt+y&quot;], &quot;command&quot;: &quot;sbp_yank_choice&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+v&quot;], &quot;command&quot;: &quot;paste&quot; },
+  { &quot;keys&quot;: [&quot;alt+v&quot;], &quot;command&quot;: &quot;sbp_yank_choice&quot; },
+
+
+  //set mark
+  { &quot;keys&quot;: [&quot;ctrl+space&quot;], &quot;command&quot;: &quot;sbp_set_mark&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;sbp_cancel_mark&quot; },
+
+
+  //move with mark
+  { &quot;keys&quot;: [&quot;ctrl+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;characters&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true}, &quot;context&quot;: 
+    [
+        { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+j&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;characters&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true}, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;alt+j&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;words&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true}, &quot;context&quot;: 
+    [
+        { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ] 
+  },
+
+  { &quot;keys&quot;: [&quot;alt+l&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;word_ends&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true}, &quot;context&quot;: 
+    [
+        { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+  { &quot;keys&quot;: [&quot;ctrl+k&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: true, &quot;extend&quot;: true}, &quot;context&quot;: 
+    [
+        { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+i&quot;], &quot;command&quot;: &quot;move&quot;, &quot;args&quot;: {&quot;by&quot;: &quot;lines&quot;, &quot;forward&quot;: false, &quot;extend&quot;: true}, &quot;context&quot;:
+    [
+        { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+space&quot;], &quot;command&quot;: &quot;sbp_cancel_mark&quot;, &quot;context&quot; :
+    [
+        { &quot;key&quot;: &quot;sbp_emacs_has_mark&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+  // Search and Replace
+  { &quot;keys&quot;: [&quot;ctrl+r&quot;], &quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;incremental_find&quot;, &quot;reverse&quot;:true} },
+  { &quot;keys&quot;: [&quot;ctrl+s&quot;], &quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;incremental_find&quot;, &quot;reverse&quot;:false} },
+  { &quot;keys&quot;: [&quot;ctrl+alt+r&quot;], &quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;replace&quot;} },
+  { &quot;keys&quot;: [&quot;super+r&quot;], &quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;replace&quot;} },
+
+  // Goto stuff
+  { &quot;keys&quot;: [&quot;ctrl+f&quot;], &quot;command&quot;: &quot;show_panel&quot;, &quot;args&quot;: {&quot;panel&quot;: &quot;find&quot;} },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+f&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;: &quot;goto&quot;, &quot;show_files&quot;: true} },
+  // { &quot;keys&quot;: [&quot;alt+f&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;: &quot;goto&quot;, &quot;show_files&quot;: true} },
+  { &quot;keys&quot;: [&quot;alt+g&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;: &quot;goto&quot;, &quot;show_files&quot;: true, &quot;text&quot; : &quot;:&quot;}},
+  { &quot;keys&quot;: [&quot;ctrl+alt+g&quot;], &quot;command&quot;: &quot;show_overlay&quot;, &quot;args&quot;: {&quot;overlay&quot;:&quot;goto&quot;, &quot;show_files&quot; : false, &quot;text&quot;: &quot;@&quot;}},
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;b&quot;], &quot;command&quot;: &quot;next_view&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+b&quot;], &quot;command&quot;: &quot;goto_open_file&quot;},
+
+
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;o&quot;], &quot;command&quot;: &quot;sbp_cycle_focus_group&quot;},
+
+  {
+    &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;2&quot;],
+    &quot;command&quot;: &quot;set_layout&quot;,
+    &quot;args&quot;:
+    {
+      &quot;cols&quot;: [0.0, 1.0],
+      &quot;rows&quot;: [0.0, 0.5, 1.0],
+      &quot;cells&quot;: [[0, 0, 1, 1], [0, 1, 1, 2]]
+    }
+  },
+  {
+    &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;1&quot;],
+    &quot;command&quot;: &quot;set_layout&quot;,
+    &quot;args&quot;:
+    {
+      &quot;cols&quot;: [0.0, 1.0],
+      &quot;rows&quot;: [0.0, 1.0],
+      &quot;cells&quot;: [[0, 0, 1, 1]]
+    }
+  },
+  {
+    &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;3&quot;],
+    &quot;command&quot;: &quot;set_layout&quot;,
+    &quot;args&quot;:
+    {
+      &quot;cols&quot;: [0.0, 0.5, 1.0],
+      &quot;rows&quot;: [0.0, 1.0],
+      &quot;cells&quot;: [[0, 0, 1, 1], [1, 0, 2, 1]]
+    }
+  },
+
+  // { &quot;keys&quot;: [&quot;ctrl+1&quot;], &quot;command&quot;: &quot;focus_group&quot;, &quot;args&quot;: { &quot;group&quot;: 0 } },
+
+  // Completion
+  { &quot;keys&quot;: [&quot;alt+/&quot;], &quot;command&quot;: &quot;auto_complete&quot; },
+  { &quot;keys&quot;: [&quot;alt+/&quot;], &quot;command&quot;: &quot;replace_completion_with_auto_complete&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;last_command&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;insert_best_completion&quot; },
+      { &quot;key&quot;: &quot;auto_complete_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: false },
+      { &quot;key&quot;: &quot;setting.tab_completion&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+  // Aborter
+  //origin
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;single_selection&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;num_selections&quot;, &quot;operator&quot;: &quot;not_equal&quot;, &quot;operand&quot;: 1 }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;clear_fields&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;has_next_field&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;clear_fields&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;has_prev_field&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;hide_panel&quot;, &quot;args&quot;: {&quot;cancel&quot;: true},
+    &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;panel_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;hide_overlay&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;overlay_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;hide_auto_complete&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;auto_complete_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+
+  //sublemacs
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;hide_overlay&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;overlay_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+   { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;hide_auto_complete&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;auto_complete_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;ctrl+g&quot;], &quot;command&quot;: &quot;hide_panel&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;panel_visible&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true }
+    ]
+  },
+
+  // Rectangles
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;r&quot;, &quot;t&quot;], &quot;command&quot;: &quot;sbp_rectangle_insert&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;r&quot;, &quot;d&quot;], &quot;command&quot;: &quot;sbp_rectangle_delete&quot; },
+
+  // Registers
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;r&quot;, &quot;s&quot;], &quot;command&quot;: &quot;sbp_register_store&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;r&quot;, &quot;i&quot;], &quot;command&quot;: &quot;sbp_register_insert&quot; },
+
+  // Do it my way
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;k&quot;], &quot;command&quot;: &quot;close&quot; },
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+c&quot;], &quot;command&quot;: &quot;exit&quot;},
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+s&quot;], &quot;command&quot;: &quot;save&quot;},
+
+  // Other Emacs features
+  { &quot;keys&quot;: [&quot;ctrl+x&quot;, &quot;ctrl+j&quot;], &quot;command&quot;: &quot;sbp_find_file_at_point&quot; },
+
+  //origin tab reindent
+  // { &quot;keys&quot;: [&quot;tab&quot;], &quot;command&quot;: &quot;reindent&quot;, &quot;context&quot;:
+  //   [
+  //     { &quot;key&quot;: &quot;setting.auto_indent&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true },
+  //     { &quot;key&quot;: &quot;selection_empty&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+  //     { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_match&quot;, &quot;operand&quot;: &quot;^$&quot;, &quot;match_all&quot;: true },
+  //     { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_match&quot;, &quot;operand&quot;: &quot;^$&quot;, &quot;match_all&quot;: true }
+  //   ]
+  // },
+    // Emacs style tabs  (use shift tab) 
+  { &quot;keys&quot;: [&quot;tab&quot;], &quot;command&quot;: &quot;reindent&quot;,  &quot;context&quot;: [
+    { &quot;key&quot;: &quot;panel_has_focus&quot;,  &quot;operand&quot;: false },
+    { &quot;key&quot;: &quot;auto_complete_visible&quot;, &quot;operand&quot;: false },
+    { &quot;key&quot;: &quot;has_next_field&quot;, &quot;operand&quot;: false },
+    { &quot;key&quot;: &quot;overlay_visible&quot;, &quot;operand&quot;: false }
+
+    ]
+  },
+
+  { &quot;keys&quot;: [&quot;tab&quot;], &quot;command&quot;: &quot;reindent&quot;,  &quot;context&quot;: [
+
+    { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;nonequal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; }
+
+    ]
+  },
+
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;    sublemacsend    &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+//table editor
+
+ { &quot;keys&quot;: [&quot;ctrl+alt+j&quot;], &quot;command&quot;: &quot;table_editor_join_lines&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;(\\|)|(\\+)&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+
+{ &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;-&quot;], &quot;command&quot;: &quot;table_editor_insert_single_hline&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;$&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+    { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;=&quot;], &quot;command&quot;: &quot;table_editor_insert_double_hline&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;$&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+    { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;enter&quot;], &quot;command&quot;: &quot;table_editor_hline_and_move&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*((\\|)|(\\+))&quot;, &quot;match_all&quot;: true },
+            { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;$&quot;, &quot;match_all&quot;: true }
+        ]
+    },
+    { &quot;keys&quot;: [&quot;ctrl+x&quot;,&quot;|&quot;], &quot;command&quot;: &quot;table_editor_csv_to_table&quot;, &quot;context&quot;:
+        [
+            { &quot;key&quot;: &quot;setting.enable_table_editor&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: true, &quot;match_all&quot;: true }
+        ]
+    },
+
+
+//smart markdown
+{ &quot;keys&quot;: [&quot;tab&quot;], &quot;command&quot;: &quot;smart_folding&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;markup.heading.markdown&quot; }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;shift+tab&quot;], &quot;command&quot;: &quot;global_folding&quot;, &quot;context&quot;:
+      [
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;enter&quot;], &quot;command&quot;: &quot;smart_list&quot;, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; },
+      { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*([-+*]|\\d+\\.+)\\s+&quot; }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;enter&quot;], &quot;command&quot;: &quot;smart_list&quot;, &quot;context&quot;:
+    [
+        { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; },
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;markup.list&quot; }
+    ]
+  },
+  { &quot;keys&quot;: [&quot;tab&quot;], &quot;command&quot;: &quot;smart_table&quot;,
+    &quot;args&quot;: {&quot;forward&quot;: true}, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; },
+      { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*(\\||\\+[-=])&quot;,
+        &quot;match_all&quot;: true}
+    ]
+  },
+  { &quot;keys&quot;: [&quot;tab&quot;], &quot;command&quot;: &quot;smart_table&quot;,
+    &quot;args&quot;: {&quot;forward&quot;: true}, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; },
+      { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*&quot; },
+      { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;\\s*(\\||\\+[-=])&quot;,
+        &quot;match_all&quot;: true}
+    ]
+  },
+  { &quot;keys&quot;: [&quot;shift+tab&quot;], &quot;command&quot;: &quot;smart_table&quot;,
+    &quot;args&quot;: {&quot;forward&quot;: false}, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; },
+      { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*(\\||\\+[-=])&quot;,
+        &quot;match_all&quot;: true}
+    ]
+  },
+  { &quot;keys&quot;: [&quot;shift+tab&quot;], &quot;command&quot;: &quot;smart_table&quot;,
+    &quot;args&quot;: {&quot;forward&quot;: false}, &quot;context&quot;:
+    [
+      { &quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;text.html.markdown&quot; },
+      { &quot;key&quot;: &quot;preceding_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;^\\s*&quot; },
+      { &quot;key&quot;: &quot;following_text&quot;, &quot;operator&quot;: &quot;regex_contains&quot;, &quot;operand&quot;: &quot;\\s*(\\||\\+[-=])&quot;,
+        &quot;match_all&quot;: true}
+    ]
+  },
+
+//&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+//ctags
+
+{
+    &quot;command&quot;: &quot;navigate_to_definition&quot;,
+    &quot;keys&quot;: [&quot;ctrl+t&quot;, &quot;ctrl+t&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;navigate_to_definition&quot;,
+    &quot;keys&quot;: [&quot;ctrl+period&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;search_for_definition&quot;,
+    &quot;keys&quot;: [&quot;ctrl+t&quot;, &quot;ctrl+y&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;jump_back&quot;,
+    &quot;keys&quot;: [&quot;ctrl+t&quot;, &quot;ctrl+b&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;jump_back&quot;,
+    &quot;keys&quot;: [&quot;ctrl+comma&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;jump_back&quot;,
+    &quot;args&quot;: {&quot;to&quot;: &quot;last_modification&quot;},
+    &quot;keys&quot;: [&quot;ctrl+t&quot;, &quot;ctrl+m&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;rbeuild_tags&quot;,
+    &quot;keys&quot;: [&quot;ctrl+t&quot;, &quot;ctrl+r&quot;]
+  }
+,  {
+    &quot;command&quot;: &quot;show_symbols&quot;,
+    &quot;context&quot;: [
+      {
+        &quot;key&quot;: &quot;selector&quot;,
+        &quot;match_all&quot;: true,
+        &quot;operand&quot;: &quot;source -source.css&quot;,
+        &quot;operator&quot;: &quot;equal&quot;
+      }
+    ],
+    &quot;keys&quot;: [&quot;alt+s&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;show_symbols&quot;,
+    &quot;args&quot;: {&quot;type&quot;: &quot;multi&quot;},
+    &quot;context&quot;: [
+      {
+        &quot;key&quot;: &quot;selector&quot;,
+        &quot;match_all&quot;: true,
+        &quot;operand&quot;: &quot;source -source.css&quot;,
+        &quot;operator&quot;: &quot;equal&quot;
+      }
+    ],
+    &quot;keys&quot;: [&quot;alt+shift+s&quot;]
+  },
+  {
+    &quot;command&quot;: &quot;show_symbols&quot;,
+    &quot;args&quot;: {&quot;type&quot;: &quot;lang&quot;},
+    &quot;context&quot;: [
+      {
+        &quot;key&quot;: &quot;selector&quot;,
+        &quot;match_all&quot;: true,
+        &quot;operand&quot;: &quot;source -source.css&quot;,
+        &quot;operator&quot;: &quot;equal&quot;
+      }
+    ],
+    &quot;keys&quot;: [&quot;ctrl+alt+shift+s&quot;]
+  },
+  { // override current default
+    &quot;command&quot;: &quot;transpose&quot;,
+    &quot;context&quot;: [
+      { &quot;key&quot;: &quot;num_selections&quot;, &quot;operator&quot;: &quot;not_equal&quot;, &quot;operand&quot;: 1 }
+    ],
+    &quot;keys&quot;: [&quot;ctrl+t&quot;]
+  }
+
+
+
+]</code></pre>
