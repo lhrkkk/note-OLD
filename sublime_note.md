@@ -1,6 +1,8 @@
 MyNote&Config of Sublime Text Editor
 Sublime Text - An Excellent Replacement of GNU Emacs.
 
+# 要点
+面向对象(oo, 库), 版本控制(git), 自动构建(make), 编辑器(Sublime Text 2), 算法(Algorithm), 编程语法和规范(各种语言), -- 对cs实体的把握, 工作方式 -- 阅读和编写程序的能力(实践, 设计, ), 阅读获取, 衔接和整合,资源(各种工具, 开发方法, 各种开源项目的选择和应用, 英文阅读能力和迅速使用新库的能力). 
 
 # keyboard binding
 Only have ctrl+x prefix, there is no ctrl+c and other prefix.
@@ -9,7 +11,7 @@ The only exception is "ctrl+x, ctrl+x": "cut".
 括号里是重复兼容emacs的部分按键.
 "/" 隔开的前面是ctrl, 后面是alt, shift和ctrl-x只作为ctrl辅助, 没有ctrl+c前缀, ctrl+c只有复制含义.
 alt一般和一些对应操作或者文件操作联系起来. 
-	添加一行
+
 	   
 	f2   bookmark 下一个, C设置, S上一个/选择所有 bookmark
 	f3   查找下一个, C查找当前单词, S上一个/选择所有
